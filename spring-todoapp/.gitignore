@@ -36,3 +36,4 @@ Dockerfile
 images/
 application.properties
 *.db
+*.sql
