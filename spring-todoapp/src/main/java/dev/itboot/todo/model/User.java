@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 public class User {
 	@NotBlank
-	@Size(max = 32, min = 10)
+	@Size(max = 32, min = 5)
 	private String id;
 	
 	@NotBlank
