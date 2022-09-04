@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+	<!-- コンテンツの表示 -->
+	<div layout:fragment="content" class="container-fluid">
+		<section  class="container-fluid" style="padding-top:80px">
+			<div class="row g-4 row-cols-md-4 row-cols-1">
+				<div class="col-auto">
+					<div class="card mb-3 mx-1" style="width: 18rem">
+						<div class="card-body">
+							<h4 class="card-title">タイトル</h4>
+							<h4 class="border-bottom"></h4>
+							<p class="card-text">内容</p>
+							<div class="row">
+								<div class="text-right">
+									<a href="#" class="btn btn-primary col-auto mx-3">
+										<i class="bi bi-pencil-fill"></i>
+										編集
+									</a>
+									<a href="#" class="btn btn-danger col-auto">
+										<i class="bi bi-trash"></i>
+										削除
+									</a>							
+								
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-auto">
+					<div class="card mb-3 mx-1" style="width: 18rem">
+						<div class="card-body">
+							<h4 class="card-title">タイトル</h4>
+							<h4 class="border-bottom"></h4>
+							<p class="card-text">内容</p>
+							<div class="row justify-content-end">
+								<div class="text-right">
+									<a href="#" class="btn btn-primary col-auto mx-3">
+										<i class="bi bi-pencil-fill"></i>
+										編集
+									</a>
+									<a href="#" class="btn btn-danger col-auto">
+										<i class="bi bi-trash"></i>
+										削除
+									</a>							
+								
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

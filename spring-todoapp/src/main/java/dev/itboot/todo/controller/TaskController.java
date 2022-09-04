@@ -1,8 +1,7 @@
-package dev.itboot.todo.model;
+package dev.itboot.todo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import dev.itboot.todo.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +12,7 @@ public class TaskController {
 	private final TaskService service;
 	
 	@GetMapping("/")
-	@ResponseBody
 	public String index() {
-		return "hello";
+		return "index";
 	}
 }

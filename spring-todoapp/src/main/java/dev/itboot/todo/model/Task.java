@@ -24,6 +24,10 @@ public class Task {
 	private String content;
 	
 	@NotBlank
+	@Size(max = 32)
+	private String title;
+	
+	@NotBlank
 	@Size(max = 32, min = 10)
 	private String userId;
 	
