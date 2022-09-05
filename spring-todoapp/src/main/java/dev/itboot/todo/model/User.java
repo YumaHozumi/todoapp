@@ -1,5 +1,7 @@
 package dev.itboot.todo.model;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -19,10 +21,12 @@ public class User {
 	private String id;
 	
 	@NotBlank
-	@Size(max = 32, min = 10)
+	@Size(max = 32, min = 8)
 	private String password;
 	
 	@NotBlank
 	@Size(max = 32)
 	private String nickname;
+	
+	private List<Task> tasks;
 }

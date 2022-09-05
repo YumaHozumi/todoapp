@@ -28,9 +28,9 @@ public class Task {
 	private String title;
 	
 	@NotBlank
-	@Size(max = 32, min = 10)
+	@Size(max = 32, min = 5)
 	private String userId;
-	
+
 	@Future
 	private Date schedule;
 	

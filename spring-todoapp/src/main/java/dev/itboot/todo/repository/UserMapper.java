@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
 
 @Mapper
@@ -17,4 +18,6 @@ public interface UserMapper {
 	int updateByPrimaryKey(User record);
 	
 	int deleteByPrimaryKey(String id);
+	
+	List<Task> showTasks(User record);
 }

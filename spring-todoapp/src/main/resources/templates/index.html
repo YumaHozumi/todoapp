@@ -32,31 +32,31 @@
 					</div>
 				</div>
 				
-				<div class="col-auto">
-					<div class="card mb-3 mx-1" style="width: 18rem">
-						<div class="card-body">
-							<h4 class="card-title">タイトル</h4>
-							<h4 class="border-bottom"></h4>
-							<p class="card-text">内容</p>
-							<div class="row justify-content-end">
-								<div class="text-right">
-									<a href="#" class="btn btn-primary col-auto mx-3">
-										<i class="bi bi-pencil-fill"></i>
-										編集
-									</a>
-									<a href="#" class="btn btn-danger col-auto">
-										<i class="bi bi-trash"></i>
-										削除
-									</a>							
-								
+				<th:block th:each="task : ${tasks}" th:object="${task}">
+					<div class="col-auto">
+						<div class="card mb-3 mx-1" style="width: 18rem">
+							<div class="card-body">
+								<h4 class="card-title" th:text="*{title}"></h4>
+								<h4 class="border-bottom"></h4>
+								<p class="card-text" th:text="*{content}"></p>
+								<div class="row">
+									<div class="text-right">
+										<a href="#" class="btn btn-primary col-auto mx-3">
+											<i class="bi bi-pencil-fill"></i>
+											編集
+										</a>
+										<a href="#" class="btn btn-danger col-auto">
+											<i class="bi bi-trash"></i>
+											削除
+										</a>							
+									</div>
 								</div>
+								
 							</div>
-							
 						</div>
 					</div>
+				</th:block>
 					
-					
-				</div>
 			</div>
 		</section>
 	</div>

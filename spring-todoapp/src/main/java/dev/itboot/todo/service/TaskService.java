@@ -31,7 +31,7 @@ public class TaskService {
 		}
 	}
 	
-	public void deleteByPrimaryKey(Long taskId) {
-		mapper.deleteByPrimaryKey(taskId);
+	public int deleteByPrimaryKey(Long taskId) {
+		return mapper.deleteByPrimaryKey(taskId);
 	}
 }
