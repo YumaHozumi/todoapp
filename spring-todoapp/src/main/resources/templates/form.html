@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid" style="padding-top:80px">
+		<form th:action="@{/process}" th:object="${task}" method="post" novalidate class="mb-3 mx-5">
+			<input type="hidden" th:field="*{taskId}">
+			<div class="mb-3">
+				<label for="title">タスク名</label>
+				<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{title}">
+				<div class="invalid-feedback" th:errors="*{title}"></div>
+			</div>
+			
+			<div class="mb-3">
+				<label for="content">内容</label>
+				<textarea class="form-control" th:errorclass="is-invalid" th:field="*{content}"></textarea>
+				<div class="invalid-feedback" th:errors="*{content}"></div>
+			</div>
+			
+			<!-- 後で消す -->
+			<input class="form-control" th:errorclass="is-invalid" th:field="*{userId}">
+			<div class="invalid-feedback" th:errors="*{userId}"></div>
+			
+			<div class="mb-3">
+				<label for="schedule">予定日</label>
+				<input type="date" class="form-control" th:errorclass="is-invalid" th:field="*{schedule}">
+				<div class="invalid-feedback" th:errors="*{schedule}"></div>
+			</div>
+			
+			<div class="mb-3">
+				<label for="select">優先度</label>
+				<select class="form-select" id="select">
+					<option selected>未選択</option>
+					<option th:value="1" th:field="*{priority}">1</option>
+					<option th:value="2" th:field="*{priority}">2</option>
+					<option th:value="3" th:field="*{priority}">3</option>
+					<option th:value="4" th:field="*{priority}">4</option>
+					<option th:value="5" th:field="*{priority}">5</option>
+				</select>
+			</div>
+			
+			<button class="btn btn-outline-primary px-5">
+				<i class="bi bi-pencil-fill"></i>
+				保存
+			</button>
+		</form>
+		
+		<a th:href="@{/}" class="btn btn-secondary ms-5">戻る</a>
+	</div>
+</body>
+</html>
