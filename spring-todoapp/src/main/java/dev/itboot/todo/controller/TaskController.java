@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dev.itboot.todo.model.Task;
@@ -40,6 +41,12 @@ public class TaskController {
 			return "form";
 		}
 		taskService.save(task);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteTask(@PathVariable Long id) {
+		taskService.deleteByPrimaryKey(id);
 		return "redirect:/";
 	}
 }

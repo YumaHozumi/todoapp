@@ -51,7 +51,7 @@
 											<i class="bi bi-pencil-fill"></i>
 											編集
 										</a>
-										<a href="#" class="btn btn-danger col-auto">
+										<a th:href="@{/delete/{id}(id=*{taskId})}" class="btn btn-danger col-auto">
 											<i class="bi bi-trash"></i>
 											削除
 										</a>							
