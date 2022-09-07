@@ -44,6 +44,12 @@ public class TaskController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String editTask(@PathVariable Long id, Model model) {
+		model.addAttribute("task", taskService.selectByPrimaryKey(id));
+		return "form";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteTask(@PathVariable Long id) {
 		taskService.deleteByPrimaryKey(id);
