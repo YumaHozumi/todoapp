@@ -38,7 +38,11 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/")
 				//ログイン失敗時のリダイレクト先
 				.failureUrl("/login?error")
-				.permitAll());
+				.permitAll())
+		.logout(logout -> logout
+				.logoutSuccessUrl("/logout"))
+		//ブラウザを閉じて再度開いた場合でも「ログインしたままに」
+		.rememberMe();
 		return http.build();		
 	}
 	
