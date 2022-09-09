@@ -24,12 +24,15 @@ public class UserService {
 		return mapper.selectByPrimaryKey(id);
 	}
 	
-	public void save(User user) {
-		if(user.getId() == null) {
-			mapper.insert(user);
-		}else {
-			mapper.updateByPrimaryKey(user);
+	public void insert(User user) {
+		mapper.insert(user);
+	}
+	
+	public int updateByPrimaryKey(User user) {
+		if(user.getId() != null) {
+			return -1;
 		}
+		return mapper.updateByPrimaryKey(user);
 	}
 	
 	public int deleteByPrimaryKey(String id) {

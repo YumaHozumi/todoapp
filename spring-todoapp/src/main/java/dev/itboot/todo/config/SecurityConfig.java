@@ -14,16 +14,19 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import dev.itboot.todo.util.Role;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	protected PasswordEncoder passwordEncoder() {
 		//パスワードの暗号化
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http
@@ -31,7 +34,8 @@ public class SecurityConfig {
 				//セキュリティ設定を無視するパスを指定する
 				//WebSecurityConfigurerAdapterは現在非推奨
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() //cssなどはログインなしでもアクセス可
-				.mvcMatchers("/register").permitAll()
+				.mvcMatchers("/register", "/login").permitAll()
+				.antMatchers("/h2-console/**").permitAll()
 				.mvcMatchers("/admin/**").hasRole(Role.ADMIN.name())
 				.anyRequest().authenticated()
 		).formLogin(login -> login
@@ -47,11 +51,15 @@ public class SecurityConfig {
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
 		//ブラウザを閉じて再度開いた場合でも「ログインしたままに」
 		.rememberMe();
+		
+		http.headers().frameOptions().disable();
+		http.csrf().ignoringAntMatchers("/h2-console/**");
+		
 		return http.build();		
 	}
 	
 	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception{
+	protected AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
 		return auth.getAuthenticationManager();
 	}
 	

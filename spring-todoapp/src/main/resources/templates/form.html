@@ -19,9 +19,9 @@
 				<div class="invalid-feedback" th:errors="*{content}"></div>
 			</div>
 			
-			<!-- 後で消す -->
-			<input class="form-control" th:errorclass="is-invalid" th:field="*{userId}">
-			<div class="invalid-feedback" th:errors="*{userId}"></div>
+			<!-- <input type="text" name="フィールド名" th:value="${変数名}" /> 
+			th:fieldやth:nameに値を入れているとvalueの中が空になる仕様に注意-->
+			<input class="form-control" name="userId" th:value="${#authentication.principal.username}" type="hidden">
 			
 			<div class="mb-3">
 				<label for="schedule">予定日</label>

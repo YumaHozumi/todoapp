@@ -1,5 +1,6 @@
 package dev.itboot.todo.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +25,8 @@ public class TaskController {
 	private final TaskService taskService;
 	
 	@GetMapping("/")
-	public String index(Model model) {
-		User user = userService.selectByPrimaryKey("aaaaaaa");
+	public String index(Authentication loginUser, Model model) {
+		User user = userService.selectByPrimaryKey(loginUser.getName());
 		model.addAttribute("tasks", userService.showTasks(user));
 		return "index";
 	}

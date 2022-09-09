@@ -8,14 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dev.itboot.todo.model.User;
 import dev.itboot.todo.service.UserService;
 import dev.itboot.todo.util.Role;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Controller
+@Slf4j
 public class SecurityController {
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
@@ -37,7 +40,7 @@ public class SecurityController {
 	}
 	
 	@PostMapping("/register")
-	public String process(@Validated @ModelAttribute User user, BindingResult result) {
+	public String process(@Validated @ModelAttribute User user, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
 			return "register";
 		}
@@ -47,7 +50,8 @@ public class SecurityController {
 		}else {
 			user.setRole(Role.USER.name());
 		}
-		userService.save(user);
+		userService.insert(user);
 		return "redirect:/login?register";
+		
 	}
 }

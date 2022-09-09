@@ -21,7 +21,7 @@ public class User {
 	private String id;
 	
 	@NotBlank
-	@Size(max = 32, min = 8)
+	@Size(max = 20, min = 8)
 	private String password;
 	
 	@NotBlank
@@ -32,5 +32,4 @@ public class User {
 	
 	private boolean admin;
 	private String role;
-	private boolean active = true;
 }

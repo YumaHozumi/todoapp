@@ -7,12 +7,54 @@
 <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 <!-- アイコン読み込み -->
 <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
-<title>Insert title here</title>
+<title>新規登録ページ</title>
 </head>
 <body>
 	<div class="container pt-4">
 		<div class="row justify-content-center">
-			
+			<div class="card shadow" style="max-width: 480px;">
+				<div class="card-body">
+					<h3 class="card-title mb-3 text-center text-navy">ユーザ登録</h3>
+					
+					<form th:action="@{/register}" th:object="${user}" method="post" novalidate>
+						<div class="mb-3">
+							<label for="userid" class="form-label">
+								<span class="badge bg-danger">必須</span>
+								ユーザID
+							</label>
+							<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{id}">
+							<div class="invalid-feedback" th:errors="*{id}"></div>
+						</div>
+						
+						<div class="mb-3">
+							<label for="password" class="form-label">
+								<span class="badge bg-danger">必須</span>
+								パスワード
+							</label>
+							<input class="form-control" type="password" th:errorclass="is-invalid" th:field="*{password}">
+							<div class="invalid-feedback" th:errors="*{password}"></div>
+						</div>
+						
+						<div class="mb-3">
+							<label for="nickname" class="form-label">
+								<span class="badge bg-danger">必須</span>
+								ニックネーム
+							</label>
+							<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{nickname}">
+							<div class="invalid-feedback" th:errors="*{nickname}"></div>
+						</div>
+						
+						<div class="mb-3 form-check">
+							<input class="form-check-input" type="checkbox" th:field="*{admin}">
+							<label class="form-check-label" th:for="${#ids.prev('admin')}">
+								管理者(Adimin)として登録する
+							</label> 
+						</div>
+						
+						<button class="w-100 btn btn-navy" type="submit">登録</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
