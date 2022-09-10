@@ -24,8 +24,13 @@ public class UserService {
 		return mapper.selectByPrimaryKey(id);
 	}
 	
-	public void insert(User user) {
+	public boolean insert(User user) {
+		//既に同じIDのユーザがいる場合は使用不可に
+		if(mapper.selectByPrimaryKey(user.getId()) != null) {
+			return false;
+		}
 		mapper.insert(user);
+		return true;
 	}
 	
 	public int updateByPrimaryKey(User user) {

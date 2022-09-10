@@ -31,13 +31,13 @@
 			
 			<div class="mb-3">
 				<label for="select">優先度</label>
-				<select class="form-select" id="select">
-					<option selected>未選択</option>
-					<option th:value="1" th:field="*{priority}">1</option>
-					<option th:value="2" th:field="*{priority}">2</option>
-					<option th:value="3" th:field="*{priority}">3</option>
-					<option th:value="4" th:field="*{priority}">4</option>
-					<option th:value="5" th:field="*{priority}">5</option>
+				<select class="form-control" id="select" th:field="*{priority}">
+					<option th:value="0">未選択</option>
+					<option th:value="1">1</option>
+					<option th:value="2">2</option>
+					<option th:value="3">3</option>
+					<option th:value="4">4</option>
+					<option th:value="5">5</option>
 				</select>
 			</div>
 			

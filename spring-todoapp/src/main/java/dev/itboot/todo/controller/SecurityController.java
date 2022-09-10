@@ -50,7 +50,11 @@ public class SecurityController {
 		}else {
 			user.setRole(Role.USER.name());
 		}
-		userService.insert(user);
+		//ユーザ登録に失敗
+		if(!userService.insert(user)) {
+			return "redirect:/login?unique";
+		}
+		//ここまで来たら成功している
 		return "redirect:/login?register";
 		
 	}
