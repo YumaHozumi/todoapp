@@ -62,14 +62,4 @@ public class SecurityConfig {
 	protected AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
 		return auth.getAuthenticationManager();
 	}
-	
-//	@Bean
-//	public InMemoryUserDetailsManager userDetailsService() {
-//		UserDetails user = User.builder()
-//			.username("user")
-//			.password(passwordEncoder().encode("password"))
-//			.authorities("ROLE_USER")
-//			.build();
-//		return new InMemoryUserDetailsManager(user);
-//	}
 }
