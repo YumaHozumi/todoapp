@@ -35,7 +35,6 @@ public class SecurityConfig {
 				//WebSecurityConfigurerAdapterは現在非推奨
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() //cssなどはログインなしでもアクセス可
 				.mvcMatchers("/register", "/login").permitAll()
-				.antMatchers("/h2-console/**").permitAll()
 				.mvcMatchers("/admin/**").hasRole(Role.ADMIN.name())
 				.anyRequest().authenticated()
 		).formLogin(login -> login
@@ -52,9 +51,6 @@ public class SecurityConfig {
 		//ブラウザを閉じて再度開いた場合でも「ログインしたままに」
 		.rememberMe();
 		
-		http.headers().frameOptions().disable();
-		http.csrf().ignoringAntMatchers("/h2-console/**");
-		
 		return http.build();		
 	}
 	
@@ -62,14 +58,4 @@ public class SecurityConfig {
 	protected AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
 		return auth.getAuthenticationManager();
 	}
-	
-//	@Bean
-//	public InMemoryUserDetailsManager userDetailsService() {
-//		UserDetails user = User.builder()
-//			.username("user")
-//			.password(passwordEncoder().encode("password"))
-//			.authorities("ROLE_USER")
-//			.build();
-//		return new InMemoryUserDetailsManager(user);
-//	}
 }
