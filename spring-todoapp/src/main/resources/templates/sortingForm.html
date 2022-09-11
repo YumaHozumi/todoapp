@@ -10,7 +10,7 @@
 			
 			<!-- <input type="text" name="フィールド名" th:value="${変数名}" /> 
 			th:fieldやth:nameに値を入れているとvalueの中が空になる仕様に注意-->
-			<input class="form-control" name="userId" th:value="${#authentication.principal.username}" type="hidden">
+			<input class="form-control" name="userId" th:value="${#authentication.principal.username}" hidden="type">
 			
 			<div class="mb-3">
 				<label for="select">基準</label>
@@ -25,8 +25,8 @@
 				<label for="select">昇順or降順</label>
 				<select class="form-control" id="select" th:field="*{orderStr}">
 					<option th:value=null>未選択</option>
-					<option th:value="昇順">昇順</option>
-					<option th:value="降順">昇順</option>
+					<option th:value="ASC">昇順</option>
+					<option th:value="DESC">降順</option>
 				</select>
 			</div>
 			
