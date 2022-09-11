@@ -35,7 +35,6 @@ public class SecurityConfig {
 				//WebSecurityConfigurerAdapterは現在非推奨
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() //cssなどはログインなしでもアクセス可
 				.mvcMatchers("/register", "/login").permitAll()
-				.antMatchers("/h2-console/**").permitAll()
 				.mvcMatchers("/admin/**").hasRole(Role.ADMIN.name())
 				.anyRequest().authenticated()
 		).formLogin(login -> login
@@ -51,9 +50,6 @@ public class SecurityConfig {
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
 		//ブラウザを閉じて再度開いた場合でも「ログインしたままに」
 		.rememberMe();
-		
-		http.headers().frameOptions().disable();
-		http.csrf().ignoringAntMatchers("/h2-console/**");
 		
 		return http.build();		
 	}
