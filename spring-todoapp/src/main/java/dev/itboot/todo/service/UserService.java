@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
 import dev.itboot.todo.repository.UserMapper;
@@ -46,5 +47,9 @@ public class UserService {
 	
 	public List<Task> showTasks(User user){
 		return mapper.showTasks(user);
+	}
+	
+	public Sort showSortOption(User user) {
+		return mapper.showSortOption(user);
 	}
 }
