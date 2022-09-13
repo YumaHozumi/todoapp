@@ -50,6 +50,10 @@ public class UserService {
 	}
 	
 	public Sort showSortOption(User user) {
-		return mapper.showSortOption(user);
+		if(mapper.showSortOption(user) != null) {
+			return mapper.showSortOption(user);			
+		}
+		//まだ一度もソートの設定行ってなかったら新しく作成
+		return new Sort();
 	}
 }

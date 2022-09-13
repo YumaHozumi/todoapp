@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Sort {
-	private int sortId;
+	private Long sortId;
 	
 	@NotBlank
 	@Size(max = 32, min = 5)
