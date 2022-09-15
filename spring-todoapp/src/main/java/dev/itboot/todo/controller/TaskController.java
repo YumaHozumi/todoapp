@@ -30,7 +30,10 @@ public class TaskController {
 	@GetMapping("/")
 	public String index(Authentication loginUser, Model model) {
 		User user = userService.selectByPrimaryKey(loginUser.getName());
-		model.addAttribute("tasks", userService.showTasks(user));
+		Sort sort = userService.showSortOption(user);
+		log.info(sort.getName());
+		if(user == null) return "/login";
+		model.addAttribute("tasks", userService.showTasks(user, sort));
 		return "index";
 	}
 	

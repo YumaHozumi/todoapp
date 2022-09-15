@@ -45,8 +45,8 @@ public class UserService {
 		return mapper.deleteByPrimaryKey(id);
 	}
 	
-	public List<Task> showTasks(User user){
-		return mapper.showTasks(user);
+	public List<Task> showTasks(User user, Sort sort){
+		return mapper.showTasks(user, sort);
 	}
 	
 	public Sort showSortOption(User user) {

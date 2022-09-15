@@ -15,7 +15,7 @@
 			<div class="mb-3">
 				<label for="select">基準</label>
 				<select class="form-control" id="select" th:field="*{name}">
-					<option th:value=null>未選択</option>
+					<option th:value="null">未選択</option>
 					<option th:value="優先度順">優先度順</option>
 					<option th:value="予定時間順">予定時間順</option>
 				</select>
@@ -24,7 +24,7 @@
 			<div class="mb-3">
 				<label for="select">昇順or降順</label>
 				<select class="form-control" id="select" th:field="*{orderStr}">
-					<option th:value=null>未選択</option>
+					<option th:value="null">未選択</option>
 					<option th:value="ASC">昇順</option>
 					<option th:value="DESC">降順</option>
 				</select>
