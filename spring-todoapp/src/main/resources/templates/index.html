@@ -8,10 +8,17 @@
 	<!-- コンテンツの表示 -->
 	<div layout:fragment="content" class="container-fluid">
 		<div class="mb-3 ms-3" style="padding-top:80px">
-			<a th:href="@{/add}" class="btn btn-outline-primary">
-				<i class="bi bi-plus-lg"></i>
-				新規追加
-			</a>
+			<div class="row">
+				<a th:href="@{/add}" class="btn btn-outline-primary col-auto">
+					<i class="bi bi-plus-lg"></i>
+					新規追加
+				</a>
+				<a th:href="@{/sort}" class="btn btn-outline-secondary col-auto">
+					<i class="bi bi-sort-up"></i>
+					並び替え
+				</a>
+			</div>
+			
 		</div>
 		<section  class="container-fluid">
 			<div class="row g-4 row-cols-md-4 row-cols-1">

@@ -29,7 +29,9 @@ public class User {
 	private String nickname;
 	
 	private List<Task> tasks;
+	private Sort sort;
 	
 	private boolean admin;
 	private String role;
+	
 }

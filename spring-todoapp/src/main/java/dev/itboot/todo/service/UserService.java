@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
 import dev.itboot.todo.repository.UserMapper;
@@ -44,7 +45,15 @@ public class UserService {
 		return mapper.deleteByPrimaryKey(id);
 	}
 	
-	public List<Task> showTasks(User user){
-		return mapper.showTasks(user);
+	public List<Task> showTasks(User user, Sort sort){
+		return mapper.showTasks(user, sort);
+	}
+	
+	public Sort showSortOption(User user) {
+		if(mapper.showSortOption(user) != null) {
+			return mapper.showSortOption(user);			
+		}
+		//まだ一度もソートの設定行ってなかったら新しく作成
+		return new Sort();
 	}
 }

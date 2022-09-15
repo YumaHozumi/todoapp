@@ -3,7 +3,9 @@ package dev.itboot.todo.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
 
@@ -19,5 +21,7 @@ public interface UserMapper {
 	
 	int deleteByPrimaryKey(String id);
 	
-	List<Task> showTasks(User record);
+	List<Task> showTasks(@Param("user") User user, @Param("hasSort") Sort sort);
+	
+	Sort showSortOption(User record);
 }
