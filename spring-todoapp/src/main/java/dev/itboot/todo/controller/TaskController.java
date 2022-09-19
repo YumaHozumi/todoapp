@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
+import dev.itboot.todo.service.OptionService;
 import dev.itboot.todo.service.SortService;
 import dev.itboot.todo.service.TaskService;
 import dev.itboot.todo.service.UserService;
@@ -26,6 +27,7 @@ public class TaskController {
 	private final UserService userService;
 	private final TaskService taskService;
 	private final SortService sortService;
+	private final OptionService optionService;
 	
 	@GetMapping("/")
 	public String index(Authentication loginUser, Model model) {
@@ -33,6 +35,7 @@ public class TaskController {
 		Sort sort = userService.showSortOption(user);
 		if(user == null) return "/login";
 		model.addAttribute("tasks", userService.showTasks(user, sort));
+		model.addAttribute("option", userService.getOption(user));
 		return "index";
 	}
 	
@@ -77,4 +80,5 @@ public class TaskController {
 		sortService.save(sort);
 		return "redirect:/";
 	}
+
 }

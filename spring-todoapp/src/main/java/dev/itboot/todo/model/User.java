@@ -34,4 +34,5 @@ public class User {
 	private boolean admin;
 	private String role;
 	
+	private Option option;
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.itboot.todo.model.Option;
 import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
@@ -55,5 +56,12 @@ public class UserService {
 		}
 		//まだ一度もソートの設定行ってなかったら新しく作成
 		return new Sort();
+	}
+	
+	public Option getOption(User user) {
+		if(mapper.getOption(user) != null) {
+			return mapper.getOption(user);
+		}
+		return new Option();
 	}
 }

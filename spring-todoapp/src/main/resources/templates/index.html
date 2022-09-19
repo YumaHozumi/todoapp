@@ -7,13 +7,14 @@
 <body>
 	<!-- コンテンツの表示 -->
 	<div layout:fragment="content" class="container-fluid">
+	<p th:text="${option.bgColor}"/>
 		<div class="mb-3 ms-3" style="padding-top:80px">
 			<div class="row">
 				<a th:href="@{/add}" class="btn btn-outline-primary col-auto">
 					<i class="bi bi-plus-lg"></i>
 					新規追加
 				</a>
-				<a th:href="@{/sort}" class="btn btn-outline-secondary col-auto">
+				<a th:href="@{/sort}" class="btn btn-outline-secondary col-auto ms-3">
 					<i class="bi bi-sort-up"></i>
 					並び替え
 				</a>
