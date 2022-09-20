@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dev.itboot.todo.model.Option;
 import dev.itboot.todo.model.Sort;
 import dev.itboot.todo.model.Task;
 import dev.itboot.todo.model.User;
@@ -40,7 +41,8 @@ public class TaskController {
 	}
 	
 	@GetMapping("/add")
-	public String addTask(@ModelAttribute Task task) {
+	public String addTask(@ModelAttribute Task task, Model model, Authentication loginUser) {
+		model.addAttribute("option", userService.getOption(userService.selectByPrimaryKey(loginUser.getName())));
 		return "form";
 	}
 	
@@ -54,8 +56,9 @@ public class TaskController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editTask(@PathVariable Long id, Model model) {
+	public String editTask(@PathVariable Long id, Model model, Authentication loginUser) {
 		model.addAttribute("task", taskService.selectByPrimaryKey(id));
+		model.addAttribute("option", userService.getOption(userService.selectByPrimaryKey(loginUser.getName())));
 		return "form";
 	}
 	
@@ -68,7 +71,8 @@ public class TaskController {
 	@GetMapping("/sort")
 	public String sort(Authentication loginUser, Model model) {
 		User user = userService.selectByPrimaryKey(loginUser.getName());
-		model.addAttribute("sort", userService.showSortOption(user));			
+		model.addAttribute("sort", userService.showSortOption(user));
+		model.addAttribute("option", userService.getOption(user));
 		return "sortingForm";
 	}
 	
@@ -81,4 +85,19 @@ public class TaskController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/option")
+	public String editOption(Authentication loginUser, Model model) {
+		User user = userService.selectByPrimaryKey(loginUser.getName());
+		model.addAttribute("option", userService.getOption(user));
+		return "optionEdit";
+	}
+	
+	@PostMapping("/option")
+	public String postOption(@Validated @ModelAttribute Option option, BindingResult result) {
+		if(result.hasErrors()){
+			return "optionEdit";
+		}
+		optionService.save(option);
+		return "redirect:/";
+	}
 }

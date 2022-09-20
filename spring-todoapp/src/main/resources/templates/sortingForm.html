@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" th:remove="tag">
 </head>
-<body>
+<body th:class="|${option.bgColor} h-100 vstack|">
 	<div layout:fragment="content" class="container-fluid" style="padding-top:80px">
-		<form th:action="@{/sort}" th:object="${sort}" method="post" novalidate class="mb-3 mx-5">
+		<form th:action="@{/sort}" th:object="${sort}" method="post" novalidate class="mb-3 mx-5" th:classappend="|${option.bgColor == 'darkmode' ? 'text-white' : ''}|">
 			<input type="hidden" th:field="*{sortId}">
 			
 			<!-- <input type="text" name="フィールド名" th:value="${変数名}" /> 
@@ -30,7 +30,7 @@
 				</select>
 			</div>
 			
-			<button class="btn btn-outline-primary px-5">
+			<button class="btn btn-primary px-5">
 				<i class="bi bi-pencil-fill"></i>
 				保存
 			</button>
