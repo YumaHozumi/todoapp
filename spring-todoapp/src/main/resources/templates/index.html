@@ -7,7 +7,7 @@
 <body th:class="|${option.bgColor} h-100 vstack|">
 	<!-- コンテンツの表示 -->
 	<div layout:fragment="content" class="container-fluid">
-		<div class="mb-3 ms-3" style="padding-top:80px">
+		<div class="mb-3 ms-4" style="padding-top:80px">
 			<div class="row">
 				<a th:href="@{/add}" class="btn btn-primary col-auto">
 					<i class="bi bi-plus-lg"></i>
@@ -28,7 +28,7 @@
 							<div class="card-body">
 								<h4 class="card-title" th:text="*{title}"></h4>
 								<h4 class="border-bottom"></h4>
-								<p class="card-text" th:text="*{content}"></p>
+								<p class="card-text text-black" th:text="*{content}"></p>
 								<div class="row">
 									<div class="text-right">
 										<a th:href="@{/edit/{id}(id=*{taskId})}" class="btn btn-primary col-auto mx-3">
