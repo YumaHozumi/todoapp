@@ -15,7 +15,6 @@ public class Option {
 	@Size(max = 32, min = 5)
 	private String userId;
 	
-	@NotBlank
 	@Size(max = 32)
 	private String bgColor = "bg-light";
 }

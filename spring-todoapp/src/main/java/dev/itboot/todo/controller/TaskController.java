@@ -47,8 +47,9 @@ public class TaskController {
 	}
 	
 	@PostMapping("/process")
-	public String process(@Validated @ModelAttribute Task task, BindingResult result) {
+	public String process(@Validated @ModelAttribute Task task, BindingResult result, Model model, Authentication loginUser) {
 		if(result.hasErrors()) {
+			model.addAttribute("option", userService.getOption(userService.selectByPrimaryKey(loginUser.getName())));
 			return "form";
 		}
 		taskService.save(task);
