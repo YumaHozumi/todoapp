@@ -35,10 +35,34 @@
 											<i class="bi bi-pencil-fill"></i>
 											編集
 										</a>
-										<a th:href="@{/delete/{id}(id=*{taskId})}" class="btn btn-danger col-auto">
-											<i class="bi bi-trash"></i>
+										<button type="button" class="btn btn-danger col-auto" data-bs-toggle="modal"
+										data-bs-target="#modal">
 											削除
-										</a>							
+										</button>
+										
+										<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+										aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="modalLabel">確認</h4>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<!-- モーダルの本文 -->
+													<div class="modal-body">
+														本当に削除しますか？
+													</div>
+													<!-- モーダルのフッター -->
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+														<a th:href="@{/delete/{id}(id=*{taskId})}" class="btn btn-danger col-auto">
+															<i class="bi bi-trash"></i>
+															削除
+														</a>							
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 								
