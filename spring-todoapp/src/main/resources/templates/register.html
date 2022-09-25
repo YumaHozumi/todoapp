@@ -31,7 +31,12 @@
 								<span class="badge bg-danger">必須</span>
 								パスワード
 							</label>
-							<input class="form-control" type="password" th:errorclass="is-invalid" th:field="*{password}">
+							<div class="input-group">
+								<input class="form-control" type="password" th:errorclass="is-invalid" th:field="*{password}">
+								<a class="btn btn-secondary">
+									<i class="bi bi-eye-fill" id="eye"></i>
+								</a>
+							</div>
 							<div class="invalid-feedback" th:errors="*{password}"></div>
 						</div>
 						
@@ -60,5 +65,6 @@
 			</div>
 		</div>
 	</div>
+	<script th:src="@{/js/website.js}"></script>
 </body>
 </html>
