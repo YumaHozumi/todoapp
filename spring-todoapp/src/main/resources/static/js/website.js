@@ -2,7 +2,8 @@
 
 const passwordElement = document.getElementById('password');
 const eye = document.getElementById('eye');
-eye.addEventListener('click', function(){
+const eyebtn = document.getElementById("eyebtn");
+eyebtn.addEventListener('click', function(){
 	if(eye.classList.contains('bi-eye-fill')){
 		eye.classList.remove('bi-eye-fill');
 		eye.classList.add('bi-eye-slash-fill');

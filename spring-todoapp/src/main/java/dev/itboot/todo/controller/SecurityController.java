@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dev.itboot.todo.model.RegisterForm;
 import dev.itboot.todo.model.User;
 import dev.itboot.todo.service.UserService;
 import dev.itboot.todo.util.Role;
@@ -34,16 +35,18 @@ public class SecurityController {
 	}
 	
 	@GetMapping("/register")
-	public String register(@ModelAttribute User user) {
+	public String register(@ModelAttribute RegisterForm registerForm, @ModelAttribute User user) {
 		return "register";
 	}
 	
 	@PostMapping("/register")
-	public String process(@Validated @ModelAttribute User user, BindingResult result) {
-		if(result.hasErrors()) {
+	public String process(@Validated @ModelAttribute RegisterForm registerForm, BindingResult result, @Validated @ModelAttribute User user,
+			BindingResult resultUser) {
+		if(result.hasErrors() || resultUser.hasErrors()) {
 			return "register";
 		}
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		if(user.getNickname() == "") user.setNickname("ななし");
+		user.setPassword(passwordEncoder.encode(registerForm.getPassword()));
 		if(user.isAdmin()) {
 			user.setRole(Role.ADMIN.name());
 		}else {

@@ -1,7 +1,6 @@
 package dev.itboot.todo.model;
 
-import java.util.List;
-
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -9,32 +8,24 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * ユーザを表すクラス
- * @author YumaHozumi
- *
- */
-@Setter
 @Getter
-public class User {
-	@NotBlank
-	@Size(max = 32, min = 5)
-	@Pattern(regexp="[0-9a-zA-Z!_,.@~`!#^\\-*()+={}\\[\\]|:;]+")
-	private String id;
-	
+@Setter
+public class RegisterForm {
 	@NotBlank
 	@Size(max = 20, min = 8)
 	@Pattern(regexp="[0-9a-zA-Z!_,.@~`!#^\\-*()+={}\\[\\]|:;]+")
-	private String password = "hoge";
+	private String password;
+
+	@NotBlank
+	@Size(max = 20, min = 8)
+	@Pattern(regexp="[0-9a-zA-Z!_,.@~`!#^\\-*()+={}\\[\\]|:;]+")
+	private String passwordConfirm;
 	
-	@Size(max = 32)
-	private String nickname;
-	
-	private List<Task> tasks;
-	private Sort sort;
-	
-	private boolean admin;
-	private String role;
-	
-	private Option option;
+	@AssertTrue(message = "パスワードが一致しません")
+	public boolean isPasswordValid() {
+		if(password == null || password.isEmpty()) {
+			return true;
+		}
+		return password.equals(passwordConfirm);
+	}
 }
