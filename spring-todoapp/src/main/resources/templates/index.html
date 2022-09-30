@@ -3,6 +3,7 @@
  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8" th:remove="tag">
+<script th:src="@{/js/initial.js}"></script>
 </head>
 <body th:class="|${option.bgColor} h-100 vstack|">
 	<!-- コンテンツの表示 -->
@@ -26,9 +27,11 @@
 					<div class="col-auto">
 						<div class="card mb-3 mx-1" style="width: 18rem">
 							<div class="card-body">
-								<h4 class="card-title" th:text="*{title}"></h4>
-								<h4 class="border-bottom"></h4>
-								<p class="card-text text-black" th:text="*{content}"></p>
+								<div data-bs-toggle="modal" th:data-bs-target="'#taskdetail' + *{taskId}">
+									<h4 class="card-title" th:text="*{title}"></h4>
+									<h4 class="border-bottom"></h4>
+									<p class="card-text text-black" th:text="*{content}"></p>
+								</div>
 								<div class="row">
 									<div class="text-right">
 										<a th:href="@{/edit/{id}(id=*{taskId})}" class="btn btn-primary col-auto mx-3">
@@ -36,12 +39,12 @@
 											編集
 										</a>
 										<button type="button" class="btn btn-danger col-auto" data-bs-toggle="modal"
-										data-bs-target="#modal">
+										th:data-bs-target="'#modal' + *{taskId}">
 											<i class="bi bi-trash"></i>
 											削除
 										</button>
 										
-										<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+										<div class="modal fade" th:id="'modal' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
 										aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -64,9 +67,27 @@
 												</div>
 											</div>
 										</div>
+										
+										<div class="modal fade" th:id="'taskdetail' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel2"
+										aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" th:text="*{title}" id="modalLabel2"></h4>
+														<h4 th:text="*{schedule} + ' ' + *{timeSche}" th:if="*{schedule} != null and *{timeSche} != null"></h4>
+														<h4 th:text="*{schedule}" th:if="*{schedule} != null and *{timeSche} ==null"></h4>
+														<h4 th:text="*{timeSche}" th:if="*{timeSche} != null and *{schedule} == null"></h4>
+													</div>
+													<p class="modal-body text-black" th:text="*{content}"></p>
+													<!-- モーダルのフッター -->
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>							
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-								
 							</div>
 						</div>
 					</div>

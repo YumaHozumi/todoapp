@@ -1,6 +1,7 @@
 package dev.itboot.todo.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -38,7 +39,9 @@ public class Task {
 	@JsonFormat(pattern = "yyyy/MM/dd") //出力
 	private LocalDate schedule;
 	
-	private String timeSche;
+	@DateTimeFormat(pattern = "HH:mm")
+	@JsonFormat(pattern ="HH:mm")
+	private LocalTime timeSche;
 	
 	private int priority;
 }

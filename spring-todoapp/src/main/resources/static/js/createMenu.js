@@ -22,6 +22,9 @@ window.onload = () => {
 			}
 			elem.value = text;
 			elem.textContent = text;
+			if(task.timeSche === text){
+				elem.selected = true;
+			}
 			select.appendChild(elem);
 		}
 	}
