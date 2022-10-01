@@ -5,7 +5,6 @@
 </head>
 <body th:class="|${option.bgColor} h-100 vstack|">
 	<div layout:fragment="content" class="container-fluid" style="padding-top:80px">
-		<h3 th:text="|${#authentication.principal.nickname}さんのオプション|"></h3>
 		<p class="ms-5">テーマを選択</p>
 		<form th:action="@{/option}" th:object="${option}" method="post" novalidate class="mb-3 mx-5">
 			<input type="hidden" th:field="*{optionId}">
