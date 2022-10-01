@@ -2,6 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8" th:remove="tag">
+<script th:src="@{/js/createMenu.js}"></script>
+<script th:inline="javascript">
+	const task = /*[[${task}]]*/"task";
+	console.log(task);
+</script>
 </head>
 <body th:class="|${option.bgColor} h-100 vstack|">
 	<div layout:fragment="content" class="container-fluid" style="padding-top:80px">
@@ -25,8 +30,14 @@
 			
 			<div class="mb-3">
 				<label for="schedule">予定日</label>
-				<input type="date" class="form-control" th:errorclass="is-invalid" th:field="*{schedule}">
-				<div class="invalid-feedback" th:errors="*{schedule}"></div>
+				<div class="input-group">
+					<input type="date" class="form-control" th:errorclass="is-invalid" th:field="*{schedule}">
+					<select class="form-control" th:field="*{timeSche}" th:errorclass="is-invalid">
+						<option th:value="null">未選択</option>
+					</select>
+					<div class="invalid-feedback" th:errors="*{schedule}"></div>
+					<div class="invalid-feedback" th:errors="*{timeSche}"></div>
+				</div>
 			</div>
 			
 			<div class="mb-3">

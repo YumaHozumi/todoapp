@@ -1,8 +1,8 @@
 package dev.itboot.todo.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -35,10 +35,13 @@ public class Task {
 	@Size(max = 32, min = 5)
 	private String userId;
 
-	@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd") //入力時の期待フォーマット
 	@JsonFormat(pattern = "yyyy/MM/dd") //出力
 	private LocalDate schedule;
+	
+	@DateTimeFormat(pattern = "HH:mm")
+	@JsonFormat(pattern ="HH:mm")
+	private LocalTime timeSche;
 	
 	private int priority;
 }
