@@ -28,6 +28,9 @@
 						<div class="card mb-3 mx-1" style="width: 18rem">
 							<div class="card-body yubi">
 								<div data-bs-toggle="modal" th:data-bs-target="'#taskdetail' + *{taskId}">
+									<div class="text-end">
+										<span class="badge bg-secondary text-white" th:text="*{schedule}" th:if="*{schedule} != null"></span>
+									</div>
 									<h4 class="card-title" th:text="*{title}"></h4>
 									<h4 class="border-bottom"></h4>
 									<p class="card-text text-black" th:text="*{content}"></p>
