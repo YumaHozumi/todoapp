@@ -26,7 +26,7 @@
 				<th:block th:each="task : ${tasks}" th:object="${task}" th:if="${tasks.size > 0}">
 					<div class="col-auto">
 						<div class="card mb-3 mx-1" style="width: 18rem">
-							<div class="card-body">
+							<div class="card-body yubi">
 								<div data-bs-toggle="modal" th:data-bs-target="'#taskdetail' + *{taskId}">
 									<h4 class="card-title" th:text="*{title}"></h4>
 									<h4 class="border-bottom"></h4>
@@ -44,7 +44,7 @@
 											削除
 										</button>
 										
-										<div class="modal fade" th:id="'modal' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+										<div class="modal fade not-yubi" th:id="'modal' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
 										aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -68,7 +68,7 @@
 											</div>
 										</div>
 										
-										<div class="modal fade" th:id="'taskdetail' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel2"
+										<div class="modal fade not-yubi" th:id="'taskdetail' + *{taskId}" tabindex="-1" role="dialog" aria-labelledby="modalLabel2"
 										aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">

@@ -9,3 +9,15 @@
 	font-size: 16px;
 	font-weight: bold;
 }
+
+.yubi {
+	cursor: pointer;
+}
+
+.not-yubi {
+	cursor: default;
+}
+
+.sepia {
+	background-color: #EDCDB5;
+}

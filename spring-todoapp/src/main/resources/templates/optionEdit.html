@@ -33,6 +33,16 @@
 						<input type="radio" autocomplete="off" name="bgColor" value="darkmode">ダークモード
 					</th:block>
 				</label>
+				
+				<label class="btn sepia active text-black" style="border: 0.5px solid;">
+					<th:block th:if="*{bgColor} eq 'sepia'">
+						<input type="radio" autocomplete="off" name="bgColor" value="sepia" checked>セピア
+					</th:block>
+					
+					<th:block th:unless="*{bgColor} eq 'sepia'">
+						<input type="radio" autocomplete="off" name="bgColor" value="sepia">セピア
+					</th:block>
+				</label>
 			</div>
 			
 			<button class="btn btn-primary px-5">
